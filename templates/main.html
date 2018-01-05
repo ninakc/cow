@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+	<head>
+      <!-- Latest compiled and minified CSS -->
+	     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		    <!-- Optional theme -->
+			   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+			      <!-- Latest compiled and minified JavaScript -->
+				     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	</head>
+	<form action="/set" method="post">
+		<table>
+		<tr>
+			<th>Time</th>
+			<th>Song</th>
+			{% for relay in relays %}
+				<th>{{relay}}</th>
+			{% endfor %}
+			{% for i in range(0,n) %}
+				<tr>
+					<td>
+						<input autocomplete="off" autofocus class="form-control" name="time" placeholder="{{time}}" type="text"/>
+					</td>
+					<td>
+						<input autocomplete="off" autofocus class="form-control" name="song" type="text"/>
+					</td>
+					{% for relay in relays %}
+						<td>
+							<input autocomplete="off" autofocus class="form-control" name={{relay}} type="checkbox"/>
+						</td>					
+					{% endfor %}
+				</tr>
+			{% endfor %}
+		</table>
+		<button type="submit" name="submit" value="set">Set</button>
+		<button type="submit" name="submit" value="addRow">Add Row</button>
+	</form>
+</html>
